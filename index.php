@@ -14,23 +14,15 @@
 			die (print_r(sqlsrv_errors(), true));
 		}
 		
-	?>
-	
-	<form action = consultas.php>
-		<input type = "text" name = "idCuadernillo" required>
-		<input type="submit" value = "cargar">
-  	</form
-		
-	<?php
 		echo ("Cargando" .PHP_EOL);
 		if ($consultaCuadernillos == FALSE)
 			die(FormatErrors(sqlsrv_errors()));
 		while
 			($row = sqlsrv_fetch_array($consultaCuadernillos, SQLSRV_FETCH_ASSOC))
 		{
-			echo ($row['f412_id_ubicacion_aux'] . PHP_EOL);
+			echo ($row['f412_id_ubicacion_aux'].PHP_EOL);
 		}
-		
+	
 		sqlsrv_free_stmt ($consultaCuadernillos);
 		
 		function FormatErrors( $errors )
@@ -46,7 +38,14 @@
 			}
 		}
 	?>
-		</body>
+			
+	<form action = consultas.php method="get">
+		<input type = "text" name = "idCuadernillo" required ="no debe estar en blanco">
+		<input type="submit" value = "cargar">
+  	</form
+		
+	
+	</body>
 
 	
 </html>

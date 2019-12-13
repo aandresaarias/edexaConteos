@@ -1,10 +1,8 @@
-ErP!test181nt
-ErP!test181nt
 <?php
 include('conn.php');
 	
 	$idCuadernillo = ($_GET['idCuadernillo']);
-	//echo $idCuadernillo;
+	echo $idCuadernillo;
 		
 	$consultaCuadernillos = sqlsrv_query($conn, "
 	SELECT
@@ -15,7 +13,7 @@ include('conn.php');
 	  INNER JOIN [t120_mc_items] ON [t120_mc_items].[f120_rowid] = [t412_cm_control_fisico_movto].[f412_rowid_item_ext]
 	  where f410_rowid = '18'");
 	
-	$consultaListaCuadernillos = "SELECT
+	/*$consultaListaCuadernillos = "SELECT
        f412_id_ubicacion_aux
 	   ,f410_consecutivo
 	   ,f412_numero_etiqueta
@@ -24,14 +22,14 @@ include('conn.php');
 	  INNER JOIN [t410_cm_control_fisico] ON [dbo].[t410_cm_control_fisico].[f410_rowid] = [t412_cm_control_fisico_movto].[f412_rowid_cntrl_fisico]
 	  INNER JOIN [t120_mc_items] ON [t120_mc_items].[f120_rowid] = [t412_cm_control_fisico_movto].[f412_rowid_item_ext]
 	  where f410_rowid = 28
-		and f412_id_ubicacion_aux = '".$idCuadernillo."';";	
+		and f412_id_ubicacion_aux = 'S03M03N2'";	
 	  
 //and f412_id_ubicacion_aux = 'S33M08N1'";
 	
 	$consultaListaPorCuadernilloTabla = sqlsrv_query($conn, $consultaListaCuadernillos);
-
-	//echo $consultaCuadernillos;
-	echo $consultaListaCuadernillos;
-	echo $consultaListaPorCuadernilloTabla;
+*/
+	echo $consultaCuadernillos;
+	//echo $consultaListaCuadernillos;
+	//echo $consultaListaPorCuadernilloTabla;
   	
 ?>
