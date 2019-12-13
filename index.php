@@ -14,16 +14,22 @@
 			die (print_r(sqlsrv_errors(), true));
 		}
 		
-		echo ("Cargando" .PHP_EOL);
-		if ($consultaCuadernillos == FALSE)
+		if ($consultaListaPorCuadernilloTabla == FALSE)
 			die(FormatErrors(sqlsrv_errors()));
 		while
-			($row = sqlsrv_fetch_array($consultaCuadernillos, SQLSRV_FETCH_ASSOC))
+			($row = sqlsrv_fetch_array($consultaListaPorCuadernilloTabla, SQLSRV_FETCH_ASSOC))
 		{
-			echo ($row['f412_id_ubicacion_aux'].PHP_EOL);
+			echo ($row['f412_id_ubicacion_aux']
+				  ." | ".
+				   $row['f410_consecutivo']
+				  ." | ".
+				   $row['f412_numero_etiqueta']
+				  ." | ".
+	   			   $row['f120_descripcion']
+				  ." | <br />");
 		}
 	
-		sqlsrv_free_stmt ($consultaCuadernillos);
+		sqlsrv_free_stmt ($consultaListaPorCuadernilloTabla);
 		
 		function FormatErrors( $errors )
 		{
@@ -39,7 +45,7 @@
 		}
 	?>
 			
-	<form action = consultas.php method="get">
+	<form name = "consulta" action = consultas.php method="get">
 		<input type = "text" name = "idCuadernillo" required ="no debe estar en blanco">
 		<input type="submit" value = "cargar">
   	</form
